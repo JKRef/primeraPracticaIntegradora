@@ -1,0 +1,112 @@
+<div class="container">
+    <h1>Lista de productos </h1>
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Code</th>
+                <th scope="col">Price</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Category</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each products}}
+                <tr>
+                    <td> {{this.id}}            </td>
+                    <td> {{this.title}}         </td>
+                    <td> {{this.description}}   </td>
+                    <td> {{this.code}}          </td>
+                    <td> {{this.price}} ARS     </td>
+                    <td> {{this.stock}}         </td>
+                    <td> {{this.category}}      </td>
+                    <td> <a href="/edit/{{this.id}}" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button></td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+
+    <div class="row">
+        <div class="col-6 px-3">
+            <h2>Agregar producto</h2>
+            <form class="py-2" action="/api/products" method="POST">
+                <div class="mb-3">
+                    <div class="row">
+                        <label for="title" class="col-3 col-form-label">Title *</label>
+                        <div class="col-9">
+                            <input required type="text" class="form-control col-9" id="title" name="title">
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="row">
+                        <label for="description" class="col-3 col-form-label">Description *</label>
+                        <div class="col-9">
+                            <input required type="text" class="form-control" id="description" name="description">
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="row">
+                        <label for="code" class="col-3 col-form-label">Code *</label>
+                        <div class="col-9">
+                            <input required type="text" class="form-control" id="code" name="code">
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="row">
+                        <label for="price" class="col-3 col-form-label">Price *</label>
+                        <div class="col-9">
+                            <input required type="number" class="form-control" id="price" name="price">
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="row">
+                        <label for="stock" class="col-3 col-form-label">Stock *</label>
+                        <div class="col-9">
+                            <input required type="number" class="form-control" id="stock" name="stock">
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="row">
+                        <label for="category" class="col-3 col-form-label">Category *</label>
+                        <div class="col-9">
+                            <input required type="text" class="form-control" id="category" name="category">
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="row">
+                        <label for="thumbnails" class="col-3 col-form-label">Thumbnails</label>
+                        <div class="col-9">
+                            <input type="text" class="form-control" id="thumbnails" name="thumbnails">
+                        </div>
+                    </div>                    
+                </div>
+                <button type="submit" value="Send" class="btn btn-primary">Submit</button>
+            </form>
+            <hr>
+        </div>
+        <div class="col-6 px-3">
+            <h2>Eliminar producto</h2>
+            <form id="deleteProduct">
+                <div class="form-group my-2">
+                    <div class="row">
+                        <label for="del_id" class="col-3 col-form-label">Product ID *</label>
+                        <div class="col-9">
+                            <input required type="text" class="form-control" id="del_id" name="del_id">
+                        </div>
+                    </div> 
+                </div>
+                <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    <script src="./js/main.js"></script>
+</div>
